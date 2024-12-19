@@ -1,0 +1,28 @@
+/*1)
+Given an array of integers, which are the side lengths of some triangles, please find out how many right triangles we can construct using the sides from the array. 
+*/
+int get_num_right_trianges( int sides[], int len)
+{
+    sort(sides, len+sides);
+    unorder_map<int,int> map;
+    for(int i=0; i<sides.size(); i++){
+        map[sides[i]*sides[i]] +=1;
+    }
+    int ans =0;
+    for(int left =0; left+2<len; left++)
+    {
+        for(int mid = left+1; mid <len; mid++){
+            int val = sides[left]*sidse[left] + sides[mid]*sides[mid];
+
+            ans += map[val];
+        }
+
+    }
+    return ans;
+}
+
+int main(){
+    int sides[] = {3,1,4,3,5,12};
+    cout<< get_num_right_trianges(sides, 6)<<endl;
+    return 0;
+}
